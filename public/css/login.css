@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .box {
+    width: 700px;
+    height: 500px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 0 8px 32px rgba(255, 85, 21, 0.5); /* oranye dengan opacity 0.5 */
+    overflow: hidden;
+  }  
+  
+  .halfKiri {
+    flex: 1;
+    background: #f3f7fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .halfKanan {
+    flex: 1;
+    background: #ff5515;
+    color: #fff;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .halfKanan h2 {
+    margin-bottom: 24px;
+    font-size: 2rem;
+  }
+  
+  .halfKanan input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .halfKanan input:focus {
+    outline: none;
+    box-shadow: none
+  }
+  
+  .password-strength {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  
+  .password-strength span {
+    flex: 1;
+    height: 4px;
+    background: #ffd600;
+    border-radius: 2px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .create-account {
+    background: #ffd600;
+    color: #333;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .sign-in {
+    background: #fff;
+    color: #1877f2;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
