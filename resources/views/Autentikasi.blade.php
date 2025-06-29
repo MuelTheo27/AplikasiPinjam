@@ -14,8 +14,8 @@
             <img src="/image/FotoAutentikasi.png" alt="Ilustrasi" style="width:90%;margin:auto;display:block;">
           </div>
           <div class="halfKanan">
-            <h2>Welcome!</h2>
-            <form>
+            <h2>Login!</h2>
+            <form id="formAja">
               <input type="text" placeholder="Your name" required />
               <input type="email" placeholder="Your e-mail" required />
               <input type="password" placeholder="Create password" required />
@@ -24,12 +24,15 @@
               </div>
               <div class="button-group">
                 <button type="button" class="create-account">Create account</button>
-                <button type="submit" class="sign-in">Sign in</button>
+                <button type="submit" class="sign-in" id="singin">Sign in</button>
               </div>
             </form>
           </div>
         </div>
       </div> 
+      <script>
+        const ruanganUrl = "{{ route('RuanganAku') }}";
+    </script>
       <script src="/Js/Autentikasi.js"></script>    
 </body>
 </html>
