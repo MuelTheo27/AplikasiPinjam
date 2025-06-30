@@ -39,11 +39,15 @@
         </div>
 
         <div class="right-navbar">
-            <button class="logout-btn">Log out</button>
+            <button class="logout-btn" id="OutButton">Log out</button>
             <i class="fa-solid fa-circle-user fa-2x"></i>
         </div>
     </div>
     <script src="/Js/Main.js"></script> 
     @yield('content')
+    <script>
+        const LogoutUrl = "{{ route('Autentikasi') }}";
+    </script>
+    <script src="/Js/Logout.js"></script>
 </body>
 </html>

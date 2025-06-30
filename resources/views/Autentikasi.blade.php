@@ -14,25 +14,18 @@
             <img src="/image/FotoAutentikasi.png" alt="Ilustrasi" style="width:90%;margin:auto;display:block;">
           </div>
           <div class="halfKanan">
-            <h2>Login!</h2>
-            <form id="formAja">
-              <input type="text" placeholder="Your name" required />
-              <input type="email" placeholder="Your e-mail" required />
-              <input type="password" placeholder="Create password" required />
-              <div class="password-strength">
-                <span></span><span></span><span></span>
-              </div>
+            <h2>Login</h2>
+            <h6>World Vision of Indonesia</h6>
               <div class="button-group">
-                <button type="button" class="create-account">Create account</button>
-                <button type="submit" class="sign-in" id="singin">Sign in</button>
+                <button type="button" class="satuPintu">Satu Pintu</button>
+                <button type="button" class="guest" id="guestPinjam">Guest</button>
               </div>
-            </form>
           </div>
         </div>
       </div> 
       <script>
         const ruanganUrl = "{{ route('RuanganAku') }}";
-    </script>
+      </script>
       <script src="/Js/Autentikasi.js"></script>    
 </body>
 </html>

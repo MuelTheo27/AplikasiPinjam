@@ -49,13 +49,24 @@ body {
   color: black;
   cursor: pointer;
   border-radius: 20px;
-  background-color: transparent; 
-  transition: 0.3s
+  background-color: transparent;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.middle-navbar ul li a:hover {
+  background-color: #f0f0f0;
 }
 
 .nav-link.active {
   background-color: black;
   color: white;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
 .right-navbar{
