@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-// ✅ Existing Routes
+
 Route::get('/', function () {
     return view('Autentikasi');
 })->name('Autentikasi');
@@ -20,14 +20,12 @@ Route::get('/Barang', function () {
 })->name('BarangAku');
 
 
-// ✅ New Routes for Admin Pages
-
 // Admin Dashboard Page
 Route::get('/admin', function () {
     return view('admin');
 })->name('admin.dashboard');
 
-// Upload Category Page (Upload Page button)
+
 Route::get('/admin/upload-category', function () {
     return view('upload_category');
 })->name('upload.category');
