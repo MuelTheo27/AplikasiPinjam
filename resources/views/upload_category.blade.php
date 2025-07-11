@@ -16,7 +16,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 30px;
-            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 30%;
+            position: sticky;
         }
 
         .navbar img {
@@ -29,12 +31,14 @@
             gap: 10px;
         }
 
-        .logout-btn {
-            border: 1px solid black;
+         .logout-btn {
+            border: 1px solid #bbb; /* Lighter border */
             background: white;
-            padding: 5px 15px;
+            padding: 8px 20px; /* More padding */
             border-radius: 5px;
             cursor: pointer;
+            font-size: 14px;
+            color: #333;
         }
 
         .profile-icon {
@@ -56,6 +60,10 @@
         .content {
             text-align: center;
             margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         .content h2 {
@@ -69,6 +77,13 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .admin-btn {

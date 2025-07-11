@@ -6,33 +6,37 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f6f6f6; /* Slightly lighter background */
             margin: 0;
             padding: 0;
+            background-color: #f6f6f6;
         }
 
-        .navbar {
-            background-color: white;
-            padding: 10px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee; /* Lighter border */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* subtle shadow */
+        ::-webkit-scrollbar{
+            display: none;
         }
+        .navbar {
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
         .navbar img {
-            height: 40px; /* Smaller logo */
-            margin-left: 20px; /* Adjust as needed */
+            height: 50px;
         }
 
         .navbar-right {
             display: flex;
             align-items: center;
-            gap: 15px; /* Increased gap */
+            gap: 10px;
         }
 
-        .logout-btn {
+         .logout-btn {
             border: 1px solid #bbb; /* Lighter border */
             background: white;
             padding: 8px 20px; /* More padding */
@@ -43,19 +47,21 @@
         }
 
         .profile-icon {
-            width: 38px; /* Slightly larger */
-            height: 38px; /* Slightly larger */
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            background-color: #333; /* Darker grey */
+            background-color: black;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px; /* Larger icon */
-            color: white;
-            border: 1px solid #333; /* Border to match image */
-            margin-right: 20px; /* Adjust as needed */
         }
 
+        .profile-icon::after {
+            content: "👤";
+            font-size: 16px;
+            color: white;
+        }
+        
         .container {
             padding: 30px;
             max-width: 1200px; /* Constrain width for better look */
@@ -139,7 +145,7 @@
             display: flex; /* Use flex to align text nicely */
             align-items: center; /* Center text vertically if needed */
             margin-bottom: 20px; /* Space above buttons */
-            max-width: 280px; /* Limit note width */
+            max-width: 180px; /* Limit note width */
 
             
         }
@@ -188,7 +194,7 @@
         <form method="POST" action="/logout" style="margin: 0;">
             <button class="logout-btn">Log out</button>
         </form>
-        <div class="profile-icon">👤</div>
+        <div class="profile-icon"></div>
     </div>
 </div>
 
