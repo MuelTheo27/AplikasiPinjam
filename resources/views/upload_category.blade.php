@@ -94,7 +94,7 @@
 
 <!-- Navbar -->
 <div class="navbar">
-    <img src="wvi-logo.png" alt="Wahana Visi Logo">
+    <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
     <div class="navbar-right">
         <form method="post" action="logout.php" style="margin: 0;">
             <button class="logout-btn">Log out</button>

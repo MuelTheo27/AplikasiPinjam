@@ -10,6 +10,6 @@ class RuanganController extends Controller
     public function index(){
         $ruangans = Ruangan::with('fasilitas')->get();
 
-        return view('ruangan', compact('ruangans'));
+        return view('Ruangan', compact('ruangans'));
     }
 }

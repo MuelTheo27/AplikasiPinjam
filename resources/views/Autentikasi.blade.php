@@ -18,7 +18,7 @@
             <h6>World Vision of Indonesia</h6>
               <div class="button-group">
                 <button type="button" class="satuPintu" onclick="window.location.href='{{ route('login') }}'">Satu Pintu</button>
-                <button type="button" class="guest" onclick="window.location.href='{{ route('ruanganAku') }}'" id="guestPinjam">Guest</button>
+                <button type="button" class="guest" onclick="window.location.href='{{ route('RuanganAku') }}'" id="guestPinjam">Guest</button>
               </div>
           </div>
         </div>

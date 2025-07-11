@@ -7,9 +7,9 @@ use App\Http\Controllers\Auth\SSOController;
 use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/login', function () {
+    return view('Autentikasi');
+})->name('login');
 
 Route::get('calendar', [CalendarController::class, 'index'])->name('calendar');
 Route::post('calStore', [CalendarController::class, 'store'])->name('calendar.store');
@@ -20,9 +20,8 @@ Route::get('/', function () {
     return view('Autentikasi');
 })->name('Autentikasi');
 
-Route::get('/Ruangan', function () {
-    return view('Ruangan');
-})->name('RuanganAku');
+Route::get('/Ruangan', [RuanganController::class, 'index'])->name('RuanganAku');
+
 
 Route::get('/Kendaraan', function () {
     return view('Kendaraan');

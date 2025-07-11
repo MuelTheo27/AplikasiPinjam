@@ -18,20 +18,20 @@
         <div class="middle-navbar">
             <ul>
                 <li>
-                    <a href="{{ route('ruanganAku') }}"
+                    <a href="{{ route('RuanganAku') }}"
                        class="nav-link {{ request()->routeIs('ruanganAku') ? 'active' : '' }}"
                        data-id="ruangan">
                        Ruangan
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('kendaraanAku') }}"
+                    <a href="{{ route('KendaraanAku') }}"
                        class="nav-link {{ request()->routeIs('kendaraanAku') ? 'active' : '' }}"
                        data-id="kendaraan">
                        Kendaraan
                     </a>
                 </li>
-                <li><a href="{{ route('barangAku')}}" 
+                <li><a href="{{ route('BarangAku')}}" 
                        class="nav-link {{ request()->routeIs('barangAku') ? 'active' : ''}}" 
                        data-id="barang">Barang</a></li>
                 <li><a href="#" class="nav-link" data-id="booking">My Booking</a></li>
@@ -50,7 +50,7 @@
     <script src="/Js/Main.js"></script> 
     @yield('content')
     <script>
-        const LogoutUrl = "{{ route('autentikasi') }}";
+        const LogoutUrl = "{{ route('Autentikasi') }}";
     </script>
     <script src="/Js/Logout.js"></script>
 </body>

@@ -183,7 +183,7 @@
 <body>
 
 <div class="navbar">
-   <img src="{{ asset('image/image.jpeg') }}" alt="Logo">
+   <img src="{{ asset('image/image.png') }}" alt="Logo">
     <div class="navbar-right">
         <form method="POST" action="/logout" style="margin: 0;">
             <button class="logout-btn">Log out</button>
