@@ -107,9 +107,9 @@
 <div class="content">
     <h2>Jenis Upload Kategori</h2>
     <div class="card">
-        <a href="upload_ruangan.php" class="admin-btn">Upload Ruangan</a>
-        <a href="upload_barang.php" class="admin-btn">Upload Barang</a>
-        <a href="upload_kendaraan.php" class="admin-btn">Upload Kendaraan</a>
+        <a href="{{ route('upload.ruangan') }}" class="admin-btn">Upload Ruangan</a>
+        <a href="{{ route('upload.barang') }}" class="admin-btn">Upload Barang</a>
+        <a href="{{ route('upload.kendaraan') }}" class="admin-btn">Upload Kendaraan</a>
     </div>
 </div>
 

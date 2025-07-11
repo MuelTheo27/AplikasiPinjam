@@ -82,12 +82,23 @@
                             <span style="font-size: 12px; color: #4B5563;">Total seat : {{ $room['totalSeat'] }}</span>
                         </div>
 
-                        <div style="display: flex; justify-content: center; padding-top: 1rem;">
-                         <button style="background-color: #FF5722; color: white; width:50%; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#F4511E'" onmouseout="this.style.backgroundColor='#FF5722'">
-                        Book
-                    </button>
-                    </div>
-                        
+                        <div style="display: flex; gap: 1rem;">
+                            {{-- Edit Button --}}
+                            <button
+                                style="background-color: #FF5722; color: white; padding: 0.5rem 2rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;"
+                                onmouseover="this.style.backgroundColor='#F4511E'"
+                                onmouseout="this.style.backgroundColor='#FF5722'">
+                                Edit
+                            </button>
+
+                            {{-- Delete Button --}}
+                            <button
+                                style="background-color: #AEAEAE; color: white; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;"
+                                onmouseover="this.style.backgroundColor='#B91C1C'"
+                                onmouseout="this.style.backgroundColor='#AEAEAE'">
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             @endforeach
