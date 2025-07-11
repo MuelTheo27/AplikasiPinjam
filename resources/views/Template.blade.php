@@ -33,8 +33,8 @@
                 </li>
                 <li><a href="{{ route('BarangAku')}}" 
                        class="nav-link {{ request()->routeIs('barangAku') ? 'active' : ''}}" 
-                       data-id="barang">Barang</a></li>
-                <li><a href="#" class="nav-link" data-id="booking">My Booking</a></li>
+                       data-id="barang">Barang
+                </a></li>
             </ul>
         </div>
 
