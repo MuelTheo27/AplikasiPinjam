@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('Autentikasi');
 })->name('Autentikasi');
 
-Route::get('/Ruangan', function(){return view("Ruangan");})->name('RuanganAku');
+Route::get('/Ruangan', function(){return view("ruanganGuest");})->name('RuanganAkuGuest');
 
 
 Route::get('/Kendaraan', function () {

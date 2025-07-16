@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Jenis Upload Kategori</title>
@@ -31,10 +32,12 @@
             gap: 10px;
         }
 
-         .logout-btn {
-            border: 1px solid #bbb; /* Lighter border */
+        .logout-btn {
+            border: 1px solid #bbb;
+            /* Lighter border */
             background: white;
-            padding: 8px 20px; /* More padding */
+            padding: 8px 20px;
+            /* More padding */
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
@@ -76,7 +79,7 @@
             display: inline-block;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 500px;
             height: 300px;
@@ -105,28 +108,30 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
-    <div class="navbar-right">
-        <form method="post" action="logout.php" style="margin: 0;">
-            <button class="logout-btn">Log out</button>
-        </form>
-        <div class="profile-icon"></div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
+        <div class="navbar-right">
+            <form method="post" action="logout.php" style="margin: 0;">
+                <button class="logout-btn">Log out</button>
+            </form>
+            <div class="profile-icon"></div>
+        </div>
     </div>
-</div>
 
-<!-- Content -->
-<div class="content">
-    <h2>Jenis Upload Kategori</h2>
-    <div class="card">
-        <a href="{{ route('upload.ruangan') }}" class="admin-btn">Upload Ruangan</a>
-        <a href="{{ route('upload.barang') }}" class="admin-btn">Upload Barang</a>
-        <a href="{{ route('upload.kendaraan') }}" class="admin-btn">Upload Kendaraan</a>
+    <!-- Content -->
+    <div class="content">
+        <h2>Jenis Upload Kategori</h2>
+        <div class="card">
+            <a href="{{ route('upload.ruangan') }}" class="admin-btn">Upload Ruangan</a>
+            <a href="{{ route('upload.barang') }}" class="admin-btn">Upload Barang</a>
+            <a href="{{ route('upload.kendaraan') }}" class="admin-btn">Upload Kendaraan</a>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>

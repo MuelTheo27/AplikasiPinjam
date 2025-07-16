@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class RuanganController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $ruangans = Ruangan::with('fasilitas')->get();
 
         return view('Ruangan', compact('ruangans'));

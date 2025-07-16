@@ -2,43 +2,65 @@
 
 @section('content')
     <div
-        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column;">
+        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column; position: relative;">
 
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-            @php
-                $listIndex = 0;
-                $rooms = [
-                    [
-                        'roomImage' =>
-                            'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
-                        'roomName' => 'Ruangan Papua',
-                        'location' => 'Wahana VW Indonesia Tangerang',
-                        'isFreeWiFi' => true,
-                        'is24Hour' => true,
-                        'totalSeat' => 13,
-                    ],
-                    [
-                        'roomImage' =>
-                            'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
-                        'roomName' => 'Ruangan Sulawesi',
-                        'location' => 'Wahana VW Indonesia Tangerang',
-                        'isFreeWiFi' => true,
-                        'is24Hour' => true,
-                        'totalSeat' => 15,
-                    ],
-                    [
-                        'roomImage' =>
-                            'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
-                        'roomName' => 'Ruangan Jawa',
-                        'location' => 'Wahana VW Indonesia Tangerang',
-                        'isFreeWiFi' => true,
-                        'is24Hour' => true,
-                        'totalSeat' => 10,
-                    ],
-                ];
-            @endphp
+        {{-- Form Search di kanan atas --}}
+        <form method="GET" action="" style="position: absolute; top: 1.5rem; right: 2.5rem; margin-left:100px">
+            <input type="text" name="search" placeholder="Search by room name..." value="{{ request('search') }}"
+                style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0.375rem; font-size: 0.875rem;">
+            <button type="submit"
+                style="background-color: #FF5722; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+                Search
+            </button>
+        </form>
 
-            @foreach ($rooms as $room)
+        @php
+            // Data rooms tetap seperti semula
+            $rooms = [
+                [
+                    'roomImage' =>
+                        'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
+                    'roomName' => 'Ruangan Papua',
+                    'location' => 'Wahana VW Indonesia Tangerang',
+                    'isFreeWiFi' => true,
+                    'is24Hour' => true,
+                    'totalSeat' => 13,
+                ],
+                [
+                    'roomImage' =>
+                        'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
+                    'roomName' => 'Ruangan Sulawesi',
+                    'location' => 'Wahana VW Indonesia Tangerang',
+                    'isFreeWiFi' => true,
+                    'is24Hour' => true,
+                    'totalSeat' => 15,
+                ],
+                [
+                    'roomImage' =>
+                        'https://media-public.dekoruma.com/article/2025/03/arsitag-4073945314-1527939251756.jpeg',
+                    'roomName' => 'Ruangan Jawa',
+                    'location' => 'Wahana VW Indonesia Tangerang',
+                    'isFreeWiFi' => true,
+                    'is24Hour' => true,
+                    'totalSeat' => 10,
+                ],
+            ];
+
+            // Ambil nilai search dari query string
+            $search = request('search');
+
+            // Filter rooms berdasarkan pencarian nama (case-insensitive)
+            $filteredRooms = collect($rooms)->filter(function ($room) use ($search) {
+                if (!$search) {
+                    return true; // tampilkan semua jika kosong
+                }
+                return stripos($room['roomName'], $search) !== false;
+            });
+        @endphp
+
+        {{-- Gunakan rooms hasil filter di foreach --}}
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem; width: 100%; max-width: 1280px;">
+            @foreach ($filteredRooms as $room)
                 <div
                     style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); padding: 1rem; display: flex; gap: 2rem; width: 72%;">
                     {{-- Room Image Section --}}
@@ -49,10 +71,8 @@
 
                     {{-- Room Details Section --}}
                     <div style="width: 50%; display: flex; flex-direction: column; gap: 1rem;">
-                        {{-- Room Name --}}
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1a1a1a;">{{ $room['roomName'] }}</h3>
 
-                        {{-- Location --}}
                         <div style="display: flex; align-items: center; color: #666;">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 style="width: 1.25rem; height: 1.25rem; margin-right: 0.25rem;" viewBox="0 0 20 20"
@@ -64,7 +84,6 @@
                             <span style="font-size: 0.875rem;">{{ $room['location'] }}</span>
                         </div>
 
-                        {{-- Specifications --}}
                         <div style="display: flex; gap: 1rem; align-items: center;">
                             <div
                                 style="display: flex; align-items: center; background-color: #F3F4F6; padding: 0.5rem 1rem; border-radius: 0.375rem;">

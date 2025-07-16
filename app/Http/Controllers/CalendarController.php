@@ -11,7 +11,7 @@ class CalendarController extends Controller
     {
         $event = array();
         $events = Event::all();
-        foreach($events as $booking){
+        foreach ($events as $booking) {
             $event[] = [
                 'id' => $booking->id,
                 'title' => $booking->title,
@@ -32,12 +32,12 @@ class CalendarController extends Controller
         ]);
 
         $conflict = Event::where(function ($query) use ($request) {
-        $query->whereBetween('start_date', [$request->start_date, $request->end_date])
-              ->orWhereBetween('end_date', [$request->start_date, $request->end_date])
-              ->orWhere(function ($query) use ($request) {
-                  $query->where('start_date', '<', $request->start_date)
+            $query->whereBetween('start_date', [$request->start_date, $request->end_date])
+                ->orWhereBetween('end_date', [$request->start_date, $request->end_date])
+                ->orWhere(function ($query) use ($request) {
+                    $query->where('start_date', '<', $request->start_date)
                         ->where('end_date', '>', $request->end_date);
-              });
+                });
         })->exists();
 
         if ($conflict) {
@@ -70,19 +70,19 @@ class CalendarController extends Controller
         }
 
         $conflict = Event::where('id', '!=', $id)
-        ->where(function ($query) use ($request) {
-            $query->whereBetween('start_date', [$request->start_date, $request->end_date])
-                  ->orWhereBetween('end_date', [$request->start_date, $request->end_date])
-                  ->orWhere(function ($query) use ($request) {
-                      $query->where('start_date', '<', $request->start_date)
+            ->where(function ($query) use ($request) {
+                $query->whereBetween('start_date', [$request->start_date, $request->end_date])
+                    ->orWhereBetween('end_date', [$request->start_date, $request->end_date])
+                    ->orWhere(function ($query) use ($request) {
+                        $query->where('start_date', '<', $request->start_date)
                             ->where('end_date', '>', $request->end_date);
-                  });
-        })->exists();
+                    });
+            })->exists();
 
         if ($conflict) {
             return response()->json([
                 'errors' => ['title' => ['This time slot is already taken.']]
-           ], 422);
+            ], 422);
         }
 
         $event->update([

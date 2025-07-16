@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Admin Page - Wahana Visi</title>
@@ -12,19 +13,21 @@
         }
 
         .navbar {
-        background-color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 30px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 40px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: 68px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
         .navbar img {
-            height: 50px;
+            width: 200px;
+            cursor: pointer;
         }
 
         .navbar-right {
@@ -33,10 +36,12 @@
             gap: 10px;
         }
 
-         .logout-btn {
-            border: 1px solid #bbb; /* Lighter border */
+        .logout-btn {
+            border: 1px solid #bbb;
+            /* Lighter border */
             background: white;
-            padding: 8px 20px; /* More padding */
+            padding: 8px 20px;
+            /* More padding */
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
@@ -74,17 +79,18 @@
         }
 
         .card {
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 500px;
-        height: 300px; /* Tinggi ditambahkan agar lebih besar */
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 8px rgba(0,0,0,0.1);
-        justify-content: center;
-        align-items: center;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            /* Tinggi ditambahkan agar lebih besar */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            align-items: center;
         }
 
 
@@ -107,25 +113,27 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Top Navbar -->
-<div class="navbar">
-    <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
-    <div class="navbar-right">
-            <button class="logout-btn"  onclick="window.location.href='{{ route('Autentikasi') }}'">Log out</button>
-        <div class="profile-icon"></div>
+    <!-- Top Navbar -->
+    <div class="navbar">
+        <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
+        <div class="navbar-right">
+            <button class="logout-btn" onclick="window.location.href='{{ route('Autentikasi') }}'">Log out</button>
+            <div class="profile-icon"></div>
+        </div>
     </div>
-</div>
 
-<!-- Main Content -->
-<div class="content">
-    <h2>Admin</h2>
-    <div class="card">
-        <a href="{{ route('upload.category') }}" class="admin-btn">Upload Page</a>
-        <a href="{{ route('admin.approval') }}" class="admin-btn">Approval Page</a>
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Admin</h2>
+        <div class="card">
+            <a href="{{ route('upload.category') }}" class="admin-btn">Upload Page</a>
+            <a href="{{ route('admin.approval') }}" class="admin-btn">Approval Page</a>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>
