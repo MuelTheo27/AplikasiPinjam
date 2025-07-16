@@ -1,4 +1,4 @@
-@extends('templateGuest')
+@extends('Template')
 
 @section('content')
     <div

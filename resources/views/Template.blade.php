@@ -26,9 +26,11 @@
                     </a>
                 </li>
 
-                <li><a href="{{ route('BarangAku') }}"
+                <li>
+                    <a href="{{ route('BarangAku') }}"
                         class="nav-link {{ request()->routeIs('barangAku') ? 'active' : '' }}" data-id="barang">Barang
-                    </a></li>
+                    </a>
+                </li>
             </ul>
         </div>
 

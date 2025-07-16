@@ -42,10 +42,8 @@
 
         .logout-btn {
             border: 1px solid #bbb;
-            /* Lighter border */
             background: white;
             padding: 8px 20px;
-            /* More padding */
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
@@ -71,47 +69,51 @@
         .container {
             padding: 30px;
             max-width: 1200px;
-            /* Constrain width for better look */
             margin: 20px auto;
-            /* Center the container */
         }
 
-        .filter-input {
-            width: 300px;
-            /* Wider filter input */
-            padding: 10px 15px;
-            /* More padding */
+        .filter-wrapper {
+            display: flex;
+            justify-content: flex-start;
             margin-bottom: 30px;
-            /* More space below filter */
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        }
+
+        .filter-select {
+            padding: 12px 18px;
             font-size: 16px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            cursor: pointer;
         }
 
         .booking-card {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            /* Stronger shadow */
             padding: 25px 30px;
-            /* More padding */
             margin-bottom: 30px;
-            /* More space between cards */
             display: flex;
             align-items: flex-start;
-            /* Align items to the top */
             gap: 30px;
         }
 
         .booking-card img {
             width: 250px;
-            /* Fixed width */
             height: 150px;
-            /* Fixed height */
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
-            /* Prevent image from shrinking */
         }
 
         .booking-content {
@@ -122,34 +124,28 @@
 
         .booking-header {
             font-size: 20px;
-            /* Larger heading */
             font-weight: bold;
             margin-bottom: 15px;
-            /* More space below heading */
         }
 
         .booking-details-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(100px, 1fr));
-            /* Three columns */
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px 40px;
-            /* Row and column gap */
             font-size: 14px;
             margin-bottom: 15px;
         }
 
+
         .detail-item strong {
             display: block;
-            /* Make strong a block to put value on new line */
             margin-bottom: 5px;
             color: #555;
             font-weight: normal;
-            /* Make labels less bold */
         }
 
         .detail-item span {
             font-weight: bold;
-            /* Make values bold */
             color: #333;
         }
 
@@ -157,45 +153,34 @@
             font-size: 14px;
             color: #666;
             margin-bottom: 15px;
-            /* Space below organization */
         }
 
         .note-display {
-            background-color: #f0f0f0;
-            /* Light grey background for note */
-            border: 1px solid #ddd;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #333;
-            min-height: 60px;
-            /* Set a minimum height */
-            display: flex;
-            /* Use flex to align text nicely */
+            display: inline-flex;
             align-items: center;
-            /* Center text vertically if needed */
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            background-color: #f5f5f5;
+            border-left: 4px solid #999;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+            max-width: fit-content;
             margin-bottom: 20px;
-            /* Space above buttons */
-            max-width: 180px;
-            /* Limit note width */
-
-
         }
 
         .action-buttons {
             display: flex;
             gap: 10px;
             justify-content: flex-end;
-            /* Align buttons to the right */
             width: 100%;
-            /* Ensure buttons take full width for alignment */
         }
 
         .reject-btn,
         .approve-btn {
             border: none;
             padding: 10px 25px;
-            /* More padding */
             border-radius: 5px;
             cursor: pointer;
             font-size: 15px;
@@ -205,7 +190,6 @@
 
         .reject-btn {
             background-color: #dc3545;
-            /* Red color */
             color: white;
         }
 
@@ -215,7 +199,6 @@
 
         .approve-btn {
             background-color: #28a745;
-            /* Green color */
             color: white;
         }
 
@@ -230,15 +213,23 @@
     <div class="navbar">
         <img src="{{ asset('image/image.png') }}" alt="Logo">
         <div class="navbar-right">
-             <button class="logout-btn" onclick="window.location.href='{{ route('Autentikasi') }}'">Log out</button>
+            <button class="logout-btn" onclick="window.location.href='{{ route('Autentikasi') }}'">Log out</button>
             <div class="profile-icon"></div>
         </div>
     </div>
 
     <div class="container">
-        <input type="text" class="filter-input" placeholder="Filter">
 
-        <div class="booking-card">
+        <div class="filter-wrapper">
+            <select class="filter-select" id="filterSelect">
+                <option value="all">Semua Kategori</option>
+                <option value="ruangan">Ruangan</option>
+                <option value="kendaraan">Kendaraan</option>
+            </select>
+        </div>
+
+        <!-- Booking Card: Ruangan -->
+        <div class="booking-card" data-category="ruangan">
             <img src="{{ asset('image/download.jpeg') }}" alt="Ruangan NTT" class="booking-image">
             <div class="booking-content">
                 <div class="booking-header">Ruangan NTT</div>
@@ -246,6 +237,7 @@
                     <div class="detail-item"><strong>Tanggal Booking:</strong><span>17 Juni 2025</span></div>
                     <div class="detail-item"><strong>Jam Booking:</strong><span>9 AM – 3 PM</span></div>
                     <div class="detail-item"><strong>Nama Event:</strong><span>Meeting Bulanan</span></div>
+                    <div class="detail-item"><strong>Category Type:</strong><span>Ruangan</span></div>
                 </div>
                 <div class="organization-name">Wahana Visi Binatro</div>
                 <div class="note-display">Pinjam Proyektor</div>
@@ -256,7 +248,8 @@
             </div>
         </div>
 
-        <div class="booking-card">
+        <!-- Booking Card: Kendaraan -->
+        <div class="booking-card" data-category="kendaraan">
             <img src="{{ asset('image/mclaren.jpg') }}" alt="Kendaraan" class="booking-image">
             <div class="booking-content">
                 <div class="booking-header">Avanza</div>
@@ -264,6 +257,7 @@
                     <div class="detail-item"><strong>Tanggal Booking:</strong><span>18 Juni 2025</span></div>
                     <div class="detail-item"><strong>Jam Booking:</strong><span>9 AM – 3 PM</span></div>
                     <div class="detail-item"><strong>Nama Event:</strong><span>Meeting Client</span></div>
+                    <div class="detail-item"><strong>Category Type:</strong><span>Kendaraan</span></div>
                 </div>
                 <div class="organization-name">Wahana Visi Pusat</div>
                 <div class="note-display">Bensin Full</div>
@@ -273,7 +267,27 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+    <script>
+        const filterSelect = document.getElementById('filterSelect');
+        const cards = document.querySelectorAll('.booking-card');
+
+        filterSelect.addEventListener('change', function() {
+            const selected = this.value;
+
+            cards.forEach(card => {
+                const category = card.dataset.category;
+
+                if (selected === 'all' || selected === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 

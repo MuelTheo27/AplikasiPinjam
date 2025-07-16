@@ -22,7 +22,6 @@ Route::get('/', function () {
 
 Route::get('/Ruangan', function(){return view("ruanganGuest");})->name('RuanganAkuGuest');
 
-
 Route::get('/Kendaraan', function () {
     return view('Kendaraan');
 })->name('KendaraanAku');
