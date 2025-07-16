@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('Autentikasi');
 })->name('Autentikasi');
 
-Route::get('/Ruangan', [RuanganController::class, 'index'])->name('RuanganAku');
+Route::get('/Ruangan', function(){return view("Ruangan");})->name('RuanganAku');
 
 
 Route::get('/Kendaraan', function () {
@@ -37,6 +37,14 @@ Route::get('/admin', function () {
     return view('admin');
 })->name('admin.dashboard');
 
+Route::prefix('admin')->group(function(){
+    Route::get('/kendaraan', function(){
+        return view('admin.KendaraanAdmin');
+    });
+    Route::get('/ruangan', function(){return view('admin.RuanganAdmin');
+    });
+});
+
 
 Route::get('/admin/upload-category', function () {
     return view('upload_category');
@@ -45,4 +53,17 @@ Route::get('/admin/upload-category', function () {
 Route::get('/admin/approval', function () {
     return view('approval');
 })->name('admin.approval');
+
+Route::get('/admin/upload-ruangan', function () {
+    return view('upload_ruangan');
+})->name('upload.ruangan');
+
+Route::get('/admin/upload-barang', function () {
+    return view('upload_barang');
+})->name('upload.barang');
+
+Route::get('/admin/upload-kendaraan', function () {
+    return view('upload_kendaraan');
+})->name('upload.kendaraan');
+
 

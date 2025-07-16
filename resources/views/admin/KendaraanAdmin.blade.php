@@ -10,24 +10,24 @@
             [
                 'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                 'carName' => 'Avanza',
-                'location' => 'Wahana VW Indonesia Tangerang',
-                'fuelType' => 'Bensin full',
+                'location' => 'Wahana VW Indonesia Tangerang Bekasi',
+                'fuelType' => 'Bensin/full',
                 'speed' => '125 mph',
                 'wheels' => 'Roda 4'
             ],
             [
                 'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                 'carName' => 'Innova',
-                'location' => 'Wahana VW Indonesia Tangerang',
-                'fuelType' => 'Bensin full',
+                'location' => 'Toyota Astra Pondok Indah Jakarta',
+                'fuelType' => 'Bensin/full',
                 'speed' => '130 mph',
                 'wheels' => 'Roda 4'
             ],
             [
                 'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                 'carName' => 'Xpander',
-                'location' => 'Wahana VW Indonesia Tangerang',
-                'fuelType' => 'Bensin full',
+                'location' => 'Mitsubishi Motors Bekasi Timur',
+                'fuelType' => 'Bensin/full',
                 'speed' => '120 mph',
                 'wheels' => 'Roda 4'
             ]
@@ -63,8 +63,12 @@
 
                     {{-- Book Button --}}
                     <button style="background-color: #FF5722; color: white; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#F4511E'" onmouseout="this.style.backgroundColor='#FF5722'">
-                        Book
-                    </button>
+    Edit
+</button>
+
+<button style="background-color: #DC2626; color: white; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#B91C1C'" onmouseout="this.style.backgroundColor='#DC2626'">
+    Delete
+</button>
                 </div>
             </div>
         @endforeach
