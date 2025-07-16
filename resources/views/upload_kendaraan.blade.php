@@ -1,183 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('templateAdmin')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upload Kendaraan</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+@section('content')
+  <style>
+    .content {
+      overflow-y: hidden !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 68px);
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f6f6f6;
-            margin: 0;
-            padding: 0;
-        }
+    .form-container {
+      background-color: white;
+      width: 100%;
+      max-width: 600px;
+      padding: 24px 32px; /* <<< dikurangi padding */
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
 
-        .navbar {
-            background-color: white;
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #eee;
-        }
+    .form-group {
+      margin-bottom: 16px; /* <<< dikurangi jarak antar field */
+    }
 
-        .navbar img {
-            height: 50px;
-        }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
 
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
 
-        .logout-btn {
-            border: 1px solid #000;
-            background-color: white;
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            cursor: pointer;
-        }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 28px;
+    }
 
-        .profile-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: 1px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
+    .discard-btn,
+    .upload-btn {
+      padding: 10px 24px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+    }
 
-        .form-container {
-            background-color: white;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
+    .discard-btn {
+      background-color: #d3d3d3;
+    }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
+    .upload-btn {
+      background-color: #ff6600;
+      color: white;
+    }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
+    @media (max-width: 600px) {
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
 
-        .form-group input[type="text"],
-        .form-group input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
+  <div class="form-container">
+    <form method="POST" action="" enctype="multipart/form-data">
+      @csrf
 
-        .file-upload {
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            cursor: pointer;
-            width: fit-content;
-            font-size: 14px;
-        }
+      <div class="form-group">
+        <label>Nama Kendaraan</label>
+        <input type="text" name="nama_kendaraan" placeholder="Contoh: Mobil Kijang" required />
+      </div>
 
-        .form-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            margin-top: 40px;
-        }
+      <div class="form-group">
+        <label>Total Kursi</label>
+        <input type="number" name="total_kursi" placeholder="Contoh: 12" required />
+      </div>
 
-        .discard-btn {
-            background-color: #d3d3d3;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      <div class="form-group">
+        <label>Lokasi</label>
+        <input type="text" name="lokasi" placeholder="Contoh: Wahana Visi Bintaro" required />
+      </div>
 
-        .upload-btn {
-            background-color: #ff6600;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+      <div class="form-group">
+        <label>Kelengkapan</label>
+        <input type="text" name="kelengkapan" placeholder="Contoh: AC, Charger, GPS" />
+      </div>
 
-        @media (max-width: 600px) {
-            .form-actions {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
-</head>
+      <div class="form-group">
+        <label>Plat Kendaraan</label>
+        <input type="text" name="plat_kendaraan" placeholder="Contoh: B 1234 WBF" required />
+      </div>
 
-<body>
+      <div class="form-group">
+        <label>Gambar Kendaraan</label>
+        <input type="file" name="gambar_kendaraan" accept="image/png" required />
+      </div>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo" />
-        <div class="navbar-right">
-            <button class="logout-btn">Log out</button>
-            <div class="profile-icon">👤</div>
-        </div>
-    </div>
-
-    <!-- Form -->
-    <div class="form-container">
-        <div class="form-group">
-            <label>Nama Kendaraan</label>
-            <input type="text" placeholder="Ruangan NTT" />
-        </div>
-
-        <div class="form-group">
-            <label>Total Kursi</label>
-            <input type="number" placeholder="12" />
-        </div>
-
-        <div class="form-group">
-            <label>Lokasi</label>
-            <input type="text" placeholder="Wahana Visi Bintaro" />
-        </div>
-
-        <div class="form-group">
-            <label>Kelengkapan</label>
-            <input type="text" placeholder="Free wifi, Projector, Papan Tulis" />
-        </div>
-
-        <div class="form-group">
-            <label>Plat Kendaraan</label>
-            <input type="text" placeholder="B 1234 WBF" />
-        </div>
-
-        <div class="form-group">
-            <label>Gambar Kendaraan</label>
-            <label class="file-upload">Insert PNG</label>
-        </div>
-
-        <div class="form-actions">
-            <button class="discard-btn">Discard</button>
-            <button class="upload-btn">Upload</button>
-        </div>
-    </div>
-
-</body>
-
-</html>
+      <div class="form-actions">
+        <button type="reset" class="discard-btn">Discard</button>
+        <button type="submit" class="upload-btn">Upload</button>
+      </div>
+    </form>
+  </div>
+@endsection

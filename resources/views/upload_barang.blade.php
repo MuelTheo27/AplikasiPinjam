@@ -1,169 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('templateAdmin')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Upload Barang</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f6f6f6;
-        }
+@section('content')
+  <style>
+    .content {
+      overflow-y: hidden !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 68px); /* tinggi dikurangi navbar */
+    }
 
-        .navbar {
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 30px;
-            border-bottom: 1px solid #ddd;
-        }
+    .form-container {
+      background-color: white;
+      width: 100%;
+      max-width: 600px;
+      padding: 24px 32px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
 
-        .navbar img {
-            height: 50px;
-        }
+    .form-group {
+      margin-bottom: 16px;
+    }
 
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
 
-        .logout-btn {
-            border: 1px solid black;
-            background: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
 
-        .profile-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 24px;
+    }
 
-        .profile-icon::after {
-            content: "👤";
-            font-size: 16px;
-            color: white;
-        }
+    .discard-btn,
+    .upload-btn {
+      padding: 10px 24px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+    }
 
-        .form-container {
-            max-width: 700px;
-            background-color: white;
-            padding: 40px;
-            margin: 40px auto;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-        }
+    .discard-btn {
+      background-color: #d3d3d3;
+    }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
+    .upload-btn {
+      background-color: #ff6600;
+      color: white;
+    }
 
-        .form-group label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-        }
+    @media (max-width: 600px) {
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
 
-        .form-group input[type="text"],
-        .form-group input[type="number"] {
-            width: 100%;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
+  <div class="form-container">
+    <form method="POST" action="" enctype="multipart/form-data">
+      @csrf
 
-        .file-upload {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #eee;
-            border: 1px dashed #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            color: #777;
-        }
+      <div class="form-group">
+        <label>Nama Barang</label>
+        <input type="text" name="nama_barang" placeholder="Contoh: Proyektor" required />
+      </div>
 
-        .form-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-        }
+      <div class="form-group">
+        <label>Lokasi</label>
+        <input type="text" name="lokasi" placeholder="Contoh: Wahana Visi Bintaro" required />
+      </div>
 
-        .discard-btn {
-            background-color: #d3d3d3;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            color: #333;
-            cursor: pointer;
-        }
+      <div class="form-group">
+        <label>Gambar Barang</label>
+        <input type="file" name="gambar_barang" accept="image/png" required />
+      </div>
 
-        .upload-btn {
-            background-color: #ff4d00;
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .upload-btn:hover {
-            background-color: #e64500;
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Navbar -->
-    <div class="navbar">
-        <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo">
-        <div class="navbar-right">
-            <form method="POST" action="/logout" style="margin: 0;">
-                @csrf
-                <button class="logout-btn">Log out</button>
-            </form>
-            <div class="profile-icon"></div>
-        </div>
-    </div>
-
-    <!-- Form Upload Barang -->
-    <div class="form-container">
-        <form method="POST" action="#" enctype="multipart/form-data">
-            @csrf
-
-            <div class="form-group">
-                <label>Nama Barang</label>
-                <input type="text" placeholder="Proyektor" name="nama_barang" />
-            </div>
-
-
-            <div class="form-group">
-                <label>Lokasi</label>
-                <input type="text" placeholder="Wahana Visi Bintaro" name="lokasi" />
-            </div>
-
-
-
-
-            <div class="form-actions">
-                <button type="button" class="discard-btn">Discard</button>
-                <button type="submit" class="upload-btn">Upload</button>
-            </div>
-        </form>
-    </div>
-
-</body>
-
-</html>
+      <div class="form-actions">
+        <button type="reset" class="discard-btn">Discard</button>
+        <button type="submit" class="upload-btn">Upload</button>
+      </div>
+    </form>
+  </div>
+@endsection

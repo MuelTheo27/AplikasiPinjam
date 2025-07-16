@@ -44,11 +44,6 @@ Route::prefix('admin')->group(function(){
     });
 });
 
-
-Route::get('/admin/upload-category', function () {
-    return view('upload_category');
-})->name('upload.category');
-
 Route::get('/admin/approval', function () {
     return view('approval');
 })->name('admin.approval');
