@@ -234,7 +234,7 @@
       </li>
 
       <li>
-        <a href="" class="{{ Route::is('admin.approval') ? 'active' : '' }}">
+        <a href="{{ route('admin.userManage') }}" class="{{ Route::is('admin.userManage') ? 'active' : '' }}">
           User Management
         </a>
       </li>

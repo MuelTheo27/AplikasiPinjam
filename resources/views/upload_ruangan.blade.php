@@ -7,71 +7,62 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: calc(100vh - 68px); /* agar tidak kena navbar height */
+      height: calc(100vh - 68px);
     }
 
     .form-container {
       background-color: white;
       width: 100%;
       max-width: 800px;
-      padding: 40px;
+      padding: 24px 32px; /* dikurangi dari 40px */
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 16px; /* dikurangi dari 25px */
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px; /* dikurangi dari 8px */
       font-weight: 600;
+      font-size: 14px; /* disamakan dengan versi kendaraan */
     }
 
     .form-group input[type="text"],
-    .form-group input[type="number"] {
+    .form-group input[type="number"],
+    .form-group input[type="file"] {
       width: 100%;
-      padding: 12px;
+      padding: 10px; /* disamakan */
       border-radius: 6px;
       border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    .file-upload {
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-      border-radius: 6px;
-      cursor: pointer;
-      width: fit-content;
       font-size: 14px;
     }
 
     .form-actions {
       display: flex;
       justify-content: flex-end;
-      gap: 15px;
-      margin-top: 40px;
+      gap: 10px; /* dikurangi dari 15px */
+      margin-top: 28px; /* dikurangi dari 40px */
+    }
+
+    .discard-btn,
+    .upload-btn {
+      padding: 10px 24px; /* disamakan */
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
     }
 
     .discard-btn {
       background-color: #d3d3d3;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
     }
 
     .upload-btn {
       background-color: #ff6600;
       color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
     }
 
     @media (max-width: 600px) {
