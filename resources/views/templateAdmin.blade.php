@@ -232,6 +232,12 @@
           Approval Page
         </a>
       </li>
+
+      <li>
+        <a href="" class="{{ Route::is('admin.approval') ? 'active' : '' }}">
+          User Management
+        </a>
+      </li>
     </ul>
   </div>
 
