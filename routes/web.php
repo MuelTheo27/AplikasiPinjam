@@ -32,9 +32,12 @@ Route::get('/Barang', function () {
 
 
 // Admin Dashboard Page
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin.dashboard');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin.dashboard');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+
 
 Route::prefix('admin')->group(function(){
     Route::get('/kendaraan', function(){
