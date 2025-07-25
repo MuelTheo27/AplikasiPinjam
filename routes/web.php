@@ -64,5 +64,9 @@ Route::get('/admin/upload-kendaraan', function () {
 })->name('upload.kendaraan');
 
 Route::get('/admin/user-management', function () {
-    return view('userManagementAdmin');
+    return view('userManagement');
 })->name('admin.userManage');
+
+Route::get('/admin/user-management/edit', function () {
+    return view('userManagementAdmin');
+})->name('admin.userManage.edit');
