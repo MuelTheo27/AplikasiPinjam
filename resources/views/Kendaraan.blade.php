@@ -1,16 +1,23 @@
 @extends('Template')
 
 @section('content')
-    <div
-        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column;">
+    {{-- SEARCH BAR DI KANAN ATAS --}}
+    <form method="GET" action="" style="position: absolute; top: 6rem; right: 2rem; z-index: 10;">
+        <input type="text" name="search" placeholder="Search by car name..." value="{{ request('search') }}"
+            style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0.375rem; font-size: 0.875rem;">
+        <button type="submit"
+            style="background-color: #FF5722; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
+            Search
+        </button>
+    </form>
 
+    <div
+        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column; position: relative; margin-top: 60px;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
             @php
-                $listIndex = 0;
                 $cars = [
                     [
-                        'carImage' =>
-                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Avanza',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',
@@ -18,8 +25,7 @@
                         'wheels' => 'Roda 4',
                     ],
                     [
-                        'carImage' =>
-                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Innova',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',
@@ -27,8 +33,7 @@
                         'wheels' => 'Roda 4',
                     ],
                     [
-                        'carImage' =>
-                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Xpander',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',
@@ -36,23 +41,26 @@
                         'wheels' => 'Roda 4',
                     ],
                 ];
+
+                $search = request('search');
+                $filteredCars = collect($cars)->filter(function ($car) use ($search) {
+                    return !$search || stripos($car['carName'], $search) !== false;
+                });
             @endphp
 
-            @foreach ($cars as $car)
+            @foreach ($filteredCars as $car)
                 <div
                     style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); padding: 1rem; display: flex; gap: 2rem; width: 72%;">
-                    {{-- Car Image Section --}}
+                    {{-- Car Image --}}
                     <div style="width: 50%;">
                         <img src="{{ $car['carImage'] }}" alt="{{ $car['carName'] }}"
                             style="width: 100%; height: auto; object-fit: cover;">
                     </div>
 
-                    {{-- Car Details Section --}}
+                    {{-- Car Details --}}
                     <div style="width: 50%; display: flex; flex-direction: column; gap: 1rem;">
-                        {{-- Car Name --}}
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1a1a1a;">{{ $car['carName'] }}</h3>
 
-                        {{-- Location --}}
                         <div style="display: flex; align-items: center; color: #666;">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 style="width: 1.25rem; height: 1.25rem; margin-right: 0.25rem;" viewBox="0 0 20 20"
@@ -64,27 +72,28 @@
                             <span style="font-size: 0.875rem;">{{ $car['location'] }}</span>
                         </div>
 
-                        {{-- Specifications --}}
                         <div style="display: flex; gap: 1rem; font-size: 0.875rem; color: #666;">
                             <span>{{ $car['fuelType'] }}</span>
                             <span>{{ $car['speed'] }}</span>
                             <span>{{ $car['wheels'] }}</span>
                         </div>
 
-                        {{-- Book Button --}}
-                        <button
-                            style="background-color: #FF5722; color: white; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;"
-                            onmouseover="this.style.backgroundColor='#F4511E'"
-                            onmouseout="this.style.backgroundColor='#FF5722'">
-                            Book
-                        </button>
+                        <div style="display: flex; justify-content: center; padding-top: 1rem;">
+                            <button
+                                style="background-color: #FF5722; color: white; width:50%; padding: 0.5rem 1.5rem; border-radius: 0.375rem; border: none; cursor: pointer; transition: background-color 0.2s;"
+                                onmouseover="this.style.backgroundColor='#F4511E'"
+                                onmouseout="this.style.backgroundColor='#FF5722'">
+                                Book
+                            </button>
+                        </div>
                     </div>
                 </div>
             @endforeach
         </div>
 
+        {{-- PAGINATION --}}
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; width:50%;">
-            <button onclick="location.href=''" type="button"
+            <button type="button"
                 style="background-color: #ff5515; border: 1px solid #ff5515; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: white; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
                 onmouseover="this.style.backgroundColor='#e64a13';" onmouseout="this.style.backgroundColor='#ff5515';">
                 Previous
@@ -94,7 +103,7 @@
                 Page
             </span>
 
-            <button onclick="location.href=''" type="button"
+            <button type="button"
                 style="background-color: #ff5515; border: 1px solid #ff5515; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: white; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
                 onmouseover="this.style.backgroundColor='#e64a13';" onmouseout="this.style.backgroundColor='#ff5515';">
                 Next
