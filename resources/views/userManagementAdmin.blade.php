@@ -111,6 +111,7 @@
     font-weight: 400;
     box-shadow: 0 1px 2px rgba(66,133,244,0.08);
     transition: background 0.2s, color 0.2s;
+    cursor: pointer;
 }
 
 
@@ -125,6 +126,7 @@
     font-weight: 400;
     box-shadow: 0 1px 2px rgba(66,133,244,0.08);
     transition: background 0.2s, color 0.2s;
+    cursor: pointer;
 }
     .action.btn-holder {
     display: flex;
@@ -182,7 +184,7 @@
 
       <div class="action btn-group">
         <div class="action btn-holder">
-          <a href="{{ route('admin.userManage.edit') }}">
+          <a href="{{ route('admin.userManage') }}">
           <button class="btn btn-action-cancel">
             <p class="btn-action-label">Cancel</p>
           </button>
@@ -200,7 +202,7 @@
     <table>
       <thead>
       <tr>
-        <th>#</th>
+        <th></th>
         <th>Menu</th>
         <th>List</th>
         <th>Add</th>
@@ -209,21 +211,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>1</td>
-        <td>Media Setting</td>
-        <td><input type="checkbox"></td> <!-- checkbox tidak disabled agar bisa dipencet -->
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
       @php
-      $mediaMenus = ['Banner Page', 'Slider Homepage', 'Gallery Our Supporter', 'Home Pop Up', 'Magazine Pop Up', 'Floating Button'];
+      $mediaMenus = ['Admin Kendaraan', 'Admin Barang', 'Admin Ruangan'];
       @endphp
       @foreach($mediaMenus as $menu)
       <tr>
-      <td></td>
-      <td class="submenu">Media Setting > {{ $menu }}</td>
+      <td>{{ $loop->iteration }}</td>
+      <td class="submenu">{{ $menu }}</td>
       <td><input type="checkbox" checked></td>
       <td><input type="checkbox" checked></td>
       <td><input type="checkbox" checked></td>
@@ -231,41 +225,8 @@
       </tr>
     @endforeach
 
-      <tr>
-        <td>2</td>
-        <td>Portal General</td>
-        <td><input type="checkbox" checked></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
 
-      <tr>
-        <td></td>
-        <td class="submenu">Portal General > Sponsor Child</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td class="submenu">Portal General > Sponsor Child > About Child Sponsorship</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td class="submenu">Portal General > Sponsor Child > Sponsor a Child</td>
-        <td><input type="checkbox"></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-        <td><input type="checkbox" checked></td>
-      </tr>
+      
       </tbody>
     </table>
     </div>

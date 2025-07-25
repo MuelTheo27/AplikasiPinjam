@@ -77,7 +77,7 @@ Route::prefix('admin')->group(function () {
 
     // Route user management admin
     Route::get('/user-management', function () {
-        return view('userManagementAdmin');
+        return view('userManagement');
     })->name('admin.userManage');
 });
 

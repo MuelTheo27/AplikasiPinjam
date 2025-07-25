@@ -116,7 +116,7 @@
             <tr>
                 <td>user@example.com</td>
                 <td>Active</td>
-                <td>Admin Barang</td>
+                <td>Admin</td>
                 <td>
                     <a href="{{ route('admin.userManage.edit') }}">
                     <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
@@ -126,7 +126,7 @@
             <tr>
                 <td>user@example.com</td>
                 <td>Active</td>
-                <td>Admin Kendaraan</td>
+                <td>Admin</td>
                 <td>
                     <a href="{{ route('admin.userManage.edit') }}">
                     <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
