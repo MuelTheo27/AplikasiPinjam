@@ -1,22 +1,23 @@
 @extends('templateAdmin')
 
 @section('content')
-</style>
 <!-- Google Fonts: Inter -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-</style>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
     table.custom-bordered {
         width: 100%;
         border-collapse: collapse;
         margin: 20px 0;
         font-size: 1em;
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #fff;
         box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     table.custom-bordered th, table.custom-bordered td {
-        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         border: 1px solid #dee2e6;
         padding: 12px 16px;
         text-align: center;
@@ -25,10 +26,10 @@
         background-color: #f8f9fa;
         font-weight: bold;
     }
-    
     table.custom-bordered tr:hover {
         background-color: #e9ecef;
     }
+
     .btn {
         font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding: 4px 12px;
@@ -39,37 +40,33 @@
         margin-right: 4px;
         transition: background 0.2s;
     }
+
     .btn-primary { background: #007bff; color: #fff; }
     .btn-primary:hover { background: #0056b3; }
+
     .btn-warning { background: #ffc107; color: #212529; }
     .btn-warning:hover { background: #e0a800; }
+
     .btn-danger { background: #dc3545; color: #fff; }
     .btn-danger:hover { background: #a71d2a; }
-    .btn-action {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:  #f4570a;
-    color:  #fff;
-    border: 1px solid  #f4570a;
-    border-radius: 4px;
-    padding: 6px 8px;
-    font-size: 1em;
-    font-weight: 400;
-    box-shadow: 0 1px 2px rgba(66,133,244,0.08);
-    transition: background 0.2s, color 0.2s;
-}
-.btn-action:hover {
-    background:  #f4570a;
-    color: #fff;
-}
 
-    .btn-action-label {
-        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
+    .btn-action {
+        background: #f4570a;
+        color: #fff;
+        border: 1px solid #f4570a;
+        border-radius: 4px;
+        padding: 6px 8px;
         font-size: 1em;
-        font-weight: 400;
-        
+        box-shadow: 0 1px 2px rgba(66,133,244,0.08);
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-action:hover {
+        background: #d94f08;
+        color: #fff;
     }
 </style>
+
 <div style="font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
     <table class="custom-bordered">
         <thead>
@@ -81,56 +78,20 @@
             </tr>
         </thead>
         <tbody>
+            @for ($i = 0; $i < 5; $i++)
             <tr>
-                <td>user@example.com</td>
+                <td>user{{ $i + 1 }}@example.com</td>
                 <td>Active</td>
                 <td>Admin</td>
                 <td>
                     <a href="{{ route('admin.userManage.edit') }}">
-                    <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
+                        <button class="btn btn-action">
+                            <i class="fas fa-edit"></i>
+                        </button>
                     </a>
                 </td>
             </tr>
-            <tr>
-                <td>user@example.com</td>
-                <td>Active</td>
-                <td>Admin</td>
-                <td>
-                    <a href="{{ route('admin.userManage.edit') }}">
-                    <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>user@example.com</td>
-                <td>Active</td>
-                <td>Admin</td>
-                <td>
-                    <a href="{{ route('admin.userManage.edit') }}">
-                    <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>user@example.com</td>
-                <td>Active</td>
-                <td>Admin</td>
-                <td>
-                    <a href="{{ route('admin.userManage.edit') }}">
-                    <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>user@example.com</td>
-                <td>Active</td>
-                <td>Admin</td>
-                <td>
-                    <a href="{{ route('admin.userManage.edit') }}">
-                    <button class="btn btn-action"><p class="btn-action-label">Action</p></button>
-                    </a>
-                </td>
-            </tr>
+            @endfor
         </tbody>
     </table>
 </div>

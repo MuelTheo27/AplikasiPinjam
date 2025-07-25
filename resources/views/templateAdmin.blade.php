@@ -16,7 +16,7 @@
     }
 
     .sidebar {
-      width: 240px;
+      width: 250px;
       background: #fff;
       height: 100vh;
       box-shadow: 1px 0 8px rgba(0, 0, 0, 0.07);
@@ -125,7 +125,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      position: relative; /* for dropdown positioning */
+      position: relative;
     }
 
     .logout-btn {
