@@ -41,9 +41,11 @@
 
         <div class="right-navbar">
             <!-- BACK BUTTON DI KANAN ATAS -->
-            <button onclick="history.back()" class="back-btn" style="margin-right: 10px;">
+            <button onclick="window.location.href='{{ route('admin.dashboard') }}'" class="back-btn"
+                style="margin-right: 10px;">
                 <i class="fas fa-arrow-left"></i> Back
             </button>
+
 
             @if (Auth::check() || session('staff_logged_in'))
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
