@@ -5,8 +5,7 @@
   <meta charset="UTF-8" />
   <title>Admin Page - Wahana Visi</title>
   <style>
-    html,
-    body {
+    html, body {
       font-family: Arial, sans-serif;
       background: #f6f6f6;
       margin: 0;
@@ -84,6 +83,10 @@
       display: none;
       padding-left: 20px;
       margin-top: 4px;
+    }
+
+    .dropdown-container.open {
+      display: block;
     }
 
     .dropdown-container a {
@@ -179,7 +182,6 @@
       user-select: none;
     }
 
-    /* Dropdown menu for logout button */
     #logoutDropdownContainer {
       display: none;
       position: absolute;
@@ -208,8 +210,7 @@
     }
 
     @media (max-width: 900px) {
-      html,
-      body {
+      html, body {
         overflow: auto;
       }
 
@@ -256,7 +257,7 @@
         <button class="dropdown-btn {{ $uploadActive ? 'active' : '' }}">
           <span>Upload Page</span><span class="arrow">{{ $uploadActive ? '▼' : '▶' }}</span>
         </button>
-        <div class="dropdown-container" style="{{ $uploadActive ? 'display:block;' : '' }}">
+        <div class="dropdown-container {{ $uploadActive ? 'open' : '' }}">
           <a href="{{ route('upload.ruangan') }}" class="{{ Route::is('upload.ruangan') ? 'active' : '' }}">Upload Ruangan</a>
           <a href="{{ route('upload.kendaraan') }}" class="{{ Route::is('upload.kendaraan') ? 'active' : '' }}">Upload Kendaraan</a>
           <a href="{{ route('upload.barang') }}" class="{{ Route::is('upload.barang') ? 'active' : '' }}">Upload Barang</a>
@@ -301,20 +302,24 @@
 
   <!-- JS Dropdown Toggle -->
   <script>
-    const dropdownBtns = document.querySelectorAll('.dropdown-btn');
-
-    dropdownBtns.forEach(btn => {
+    // Sidebar dropdown
+    document.querySelectorAll('.dropdown-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const container = btn.nextElementSibling;
         const arrow = btn.querySelector('.arrow');
-        const isOpen = container.style.display === 'block';
+        const isOpen = container.classList.contains('open');
 
-        container.style.display = isOpen ? 'none' : 'block';
-        arrow.textContent = isOpen ? '▼' : '▶';
+        if (isOpen) {
+          container.classList.remove('open');
+          arrow.textContent = '▶';
+        } else {
+          container.classList.add('open');
+          arrow.textContent = '▼';
+        }
       });
     });
 
-    // Dropdown toggle untuk tombol Menu di navbar (logoutDropdown)
+    // Navbar logout menu dropdown
     const logoutDropdownBtn = document.getElementById('logoutDropdownBtn');
     const logoutDropdownContainer = document.getElementById('logoutDropdownContainer');
     const logoutDropdownArrow = document.getElementById('logoutDropdownArrow');
@@ -326,7 +331,6 @@
       logoutDropdownArrow.textContent = isOpen ? '▼' : '▲';
     });
 
-    // Tutup dropdown logout jika klik di luar
     document.addEventListener('click', function (event) {
       if (!logoutDropdownBtn.contains(event.target) && !logoutDropdownContainer.contains(event.target)) {
         logoutDropdownContainer.style.display = 'none';
