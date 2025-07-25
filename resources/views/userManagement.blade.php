@@ -19,7 +19,7 @@
         font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         border: 1px solid #dee2e6;
         padding: 12px 16px;
-        text-align: left;
+        text-align: center;
     }
     table.custom-bordered th {
         background-color: #f8f9fa;
