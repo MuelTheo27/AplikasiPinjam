@@ -85,7 +85,8 @@
 
         <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; width:50%;">
             <button onclick="location.href=''" type="button"
-                style="background-color: #fff; border: 1px solid #e2e8f0; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: #3b82f6; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                style="background-color: #ff5515; border: 1px solid #ff5515; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: white; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
+                onmouseover="this.style.backgroundColor='#e64a13';" onmouseout="this.style.backgroundColor='#ff5515';">
                 Previous
             </button>
 
@@ -94,7 +95,8 @@
             </span>
 
             <button onclick="location.href=''" type="button"
-                style="background-color: #fff; border: 1px solid #e2e8f0; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: #3b82f6; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);">
+                style="background-color: #ff5515; border: 1px solid #ff5515; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; color: white; cursor: pointer; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);"
+                onmouseover="this.style.backgroundColor='#e64a13';" onmouseout="this.style.backgroundColor='#ff5515';">
                 Next
             </button>
         </div>

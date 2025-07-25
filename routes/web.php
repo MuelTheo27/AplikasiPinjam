@@ -1,26 +1,33 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CalendarController;
-use App\Http\Controllers\Auth\SSOController;
-use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
+// Autentikasi dan login
 Route::get('/login', function () {
     return view('Autentikasi');
 })->name('login');
-
-Route::get('calendar', [CalendarController::class, 'index'])->name('calendar');
-Route::post('calStore', [CalendarController::class, 'store'])->name('calendar.store');
-Route::delete('calDestroy/{id}', [CalendarController::class, 'destroy']);
-Route::put('calUpdate/{id}', [CalendarController::class, 'update'])->name('calendar.update');
 
 Route::get('/', function () {
     return view('Autentikasi');
 })->name('Autentikasi');
 
-Route::get('/Ruangan', function(){return view("ruanganGuest");})->name('RuanganAkuGuest');
+// Calendar routes
+Route::get('calendar', [CalendarController::class, 'index'])->name('calendar');
+Route::post('calStore', [CalendarController::class, 'store'])->name('calendar.store');
+Route::delete('calDestroy/{id}', [CalendarController::class, 'destroy']);
+Route::put('calUpdate/{id}', [CalendarController::class, 'update'])->name('calendar.update');
+
+// Guest routes
+Route::get('/Ruangan', function () {
+    return view('ruanganGuest');
+})->name('RuanganAkuGuest');  // Gunakan nama ini di blade untuk akses guest ruangan
+
+// Komen dulu kalau tidak dipakai
+Route::get('/Ruangan', function () {
+    return view('Ruangan');
+})->name('RuanganAku');
 
 Route::get('/Kendaraan', function () {
     return view('Kendaraan');
@@ -30,39 +37,46 @@ Route::get('/Barang', function () {
     return view('Barang');
 })->name('BarangAku');
 
-
-// Admin Dashboard Page
-// Route::get('/admin', function () {
-//     return view('admin');
-// })->name('admin.dashboard');
-
+// Admin dashboard main page
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
+// Group route dengan prefix 'admin' untuk halaman admin lainnya
+Route::prefix('admin')->group(function () {
 
-Route::prefix('admin')->group(function(){
-    Route::get('/kendaraan', function(){
-        return view('admin.KendaraanAdmin');
-    });
-    Route::get('/ruangan', function(){return view('admin.RuanganAdmin');
-    });
+    Route::get('/Ruangan', function () {
+        return view('Ruangan');
+    })->name('RuanganAku');
+
+    Route::get('/Kendaraan', function () {
+        return view('Kendaraan');
+    })->name('KendaraanAku');
+
+    Route::get('/Barang', function () {
+        return view('Barang');
+    })->name('BarangAku');
+    
+    // Route admin approval page
+    Route::get('/approval', function () {
+        return view('approval');
+    })->name('admin.approval');
+
+    // Route halaman upload ruangan
+    Route::get('/upload-ruangan', function () {
+        return view('upload_ruangan');
+    })->name('upload.ruangan');
+
+    // Route halaman upload barang
+    Route::get('/upload-barang', function () {
+        return view('upload_barang');
+    })->name('upload.barang');
+
+    // Route halaman upload kendaraan
+    Route::get('/upload-kendaraan', function () {
+        return view('upload_kendaraan');
+    })->name('upload.kendaraan');
+
+    // Route user management admin
+    Route::get('/user-management', function () {
+        return view('userManagementAdmin');
+    })->name('admin.userManage');
 });
-
-Route::get('/admin/approval', function () {
-    return view('approval');
-})->name('admin.approval');
-
-Route::get('/admin/upload-ruangan', function () {
-    return view('upload_ruangan');
-})->name('upload.ruangan');
-
-Route::get('/admin/upload-barang', function () {
-    return view('upload_barang');
-})->name('upload.barang');
-
-Route::get('/admin/upload-kendaraan', function () {
-    return view('upload_kendaraan');
-})->name('upload.kendaraan');
-
-Route::get('/admin/user-management', function () {
-    return view('userManagementAdmin');
-})->name('admin.userManage');

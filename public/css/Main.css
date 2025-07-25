@@ -7,6 +7,7 @@
 body {
     font-family: "JetBrains Mono", monospace;
 }
+
 .navbar {
     display: flex;
     align-items: center;
@@ -20,36 +21,45 @@ body {
     z-index: 1000;
 }
 
+/* Flex item untuk spacing seimbang */
+.navbar > div {
+    flex: 1;
+}
+
 .logo {
     width: 200px;
     cursor: pointer;
 }
 
+/* tengah navbar */
 .middle-navbar {
     border: 2px solid black;
-    height: 70px;
-    width: fit-content;
     display: flex;
     align-items: center;
-    margin-right: 150px;
-    padding: 0 20px;
+    justify-content: center;
+    padding: 6px 16px;
     border-radius: 40px;
     background-color: white;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .middle-navbar ul {
     display: flex;
     list-style: none;
-    gap: 150px;
-    justify-content: space-evenly;
+    gap: 60px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
+
 .middle-navbar ul li a {
     text-decoration: none;
     color: black;
     cursor: pointer;
     border-radius: 20px;
     background-color: transparent;
-    padding: 10px 20px;
+    padding: 8px 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
     display: inline-block;
     box-sizing: border-box;
@@ -63,14 +73,14 @@ body {
     background-color: black;
     color: white;
     border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    display: inline-block;
-    box-sizing: border-box;
+    padding: 10px 20px;
+    transition: 0.3s;
 }
 
 .right-navbar {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 30px;
 }
 
@@ -91,16 +101,8 @@ body {
     transition: 0.3s;
 }
 
-.fa-solid fa-circle-user {
+.fa-solid.fa-circle-user {
     width: 100px;
-}
-
-.nav-link.active {
-    background-color: black;
-    color: white;
-    border-radius: 20px;
-    padding: 10px 20px;
-    transition: 0.3s;
 }
 
 .container {
@@ -128,7 +130,6 @@ body {
 
 .room-image {
     border-radius: 10px;
-    width: fit-content;
     width: 400px;
 }
 
@@ -169,6 +170,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 .book-btn:hover {
     background-color: #e64a19;
 }

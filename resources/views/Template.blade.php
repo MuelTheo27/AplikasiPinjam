@@ -16,7 +16,6 @@
             <img src="/image/image.png" alt="logo" class="logo">
         </div>
 
-
         <div class="middle-navbar">
             <ul>
                 <li>
@@ -25,16 +24,27 @@
                         Ruangan
                     </a>
                 </li>
-
                 <li>
                     <a href="{{ route('BarangAku') }}"
-                        class="nav-link {{ request()->routeIs('barangAku') ? 'active' : '' }}" data-id="barang">Barang
+                        class="nav-link {{ request()->routeIs('barangAku') ? 'active' : '' }}" data-id="barang">
+                        Barang
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('KendaraanAku') }}"
+                        class="nav-link {{ request()->routeIs('KendaraanAku') ? 'active' : '' }}" data-id="barang">
+                        Kendaraan
                     </a>
                 </li>
             </ul>
         </div>
 
         <div class="right-navbar">
+            <!-- BACK BUTTON DI KANAN ATAS -->
+            <button onclick="history.back()" class="back-btn" style="margin-right: 10px;">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+
             @if (Auth::check() || session('staff_logged_in'))
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
@@ -43,6 +53,7 @@
             @endif
         </div>
     </div>
+
     <script src="/Js/Main.js"></script>
     @yield('content')
     <script>
