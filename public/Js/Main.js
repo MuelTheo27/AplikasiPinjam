@@ -1,18 +1,14 @@
-const navLinks = document.querySelectorAll('.nav-link');
-
-const saved = localStorage.getItem('activeNav')
-
-navLinks.forEach(link => {
-    link.addEventListener('click',()=> {
-        navLinks.forEach(l => {
-            l.classList.remove('active');
-        });
-        link.classList.add('active')
-    });
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Cek apakah ada elemen .room-card → berarti halaman Ruangan
+    const navLinks = document.querySelectorAll(".nav-link");
+    const saved = localStorage.getItem("activeNav");
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            navLinks.forEach((l) => l.classList.remove("active"));
+            link.classList.add("active");
+        });
+    });
+
     const cards = document.querySelectorAll(".room-card");
     const tableRows = document.querySelectorAll(".table-row");
     const pagination = document.querySelector(".pagination");
@@ -20,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 1;
 
     if (cards.length > 0) {
-        runPagination(cards, 4); // Ruangan: 4 card per page
+        runPagination(cards, 4);
     } else if (tableRows.length > 0) {
-        runPagination(tableRows, rowsPerPage); // Barang: 5 row per page
+        runPagination(tableRows, rowsPerPage);
     }
 
     function runPagination(items, perPage) {
@@ -47,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const prev = document.createElement("a");
             prev.href = "#";
             prev.innerHTML = "&laquo;";
-            prev.classList.toggle("disabled", currentPage === 1);
+            if (currentPage === 1) prev.classList.add("disabled");
             prev.addEventListener("click", (e) => {
                 e.preventDefault();
                 if (currentPage > 1) showPage(currentPage - 1);
@@ -69,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const next = document.createElement("a");
             next.href = "#";
             next.innerHTML = "&raquo;";
-            next.classList.toggle("disabled", currentPage === totalPages);
+            if (currentPage === totalPages) next.classList.add("disabled");
             next.addEventListener("click", (e) => {
                 e.preventDefault();
                 if (currentPage < totalPages) showPage(currentPage + 1);

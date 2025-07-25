@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <title>Admin Page - Wahana Visi</title>
   <style>
-    html, body {
+    html,
+    body {
       font-family: Arial, sans-serif;
       background: #f6f6f6;
       margin: 0;
@@ -124,6 +125,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      position: relative; /* for dropdown positioning */
     }
 
     .logout-btn {
@@ -135,6 +137,10 @@
       font-size: 14px;
       color: #333;
       transition: background-color 0.2s ease, color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
     }
 
     .profile-icon {
@@ -170,10 +176,40 @@
     .arrow {
       font-size: 14px;
       transition: transform 0.3s ease;
+      user-select: none;
+    }
+
+    /* Dropdown menu for logout button */
+    #logoutDropdownContainer {
+      display: none;
+      position: absolute;
+      top: 48px;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      min-width: 140px;
+      z-index: 1400;
+      box-sizing: border-box;
+    }
+
+    #logoutDropdownContainer a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+
+    #logoutDropdownContainer a:hover {
+      background-color: #f4570a;
+      color: white;
     }
 
     @media (max-width: 900px) {
-      html, body {
+      html,
+      body {
         overflow: auto;
       }
 
@@ -213,7 +249,7 @@
       </li>
 
       @php
-        $uploadActive = Route::is('upload.ruangan') || Route::is('upload.kendaraan') || Route::is('upload.barang');
+      $uploadActive = Route::is('upload.ruangan') || Route::is('upload.kendaraan') || Route::is('upload.barang');
       @endphp
 
       <li>
@@ -245,7 +281,15 @@
   <div class="navbar">
     <img src="{{ asset('image/image.png') }}" alt="Wahana Visi Logo" />
     <div class="navbar-right">
-      <button class="logout-btn" onclick="window.location.href='{{ route('Autentikasi') }}'">Log out</button>
+      <button id="logoutDropdownBtn" class="logout-btn" type="button">
+        Menu <span id="logoutDropdownArrow" class="arrow">▼</span>
+      </button>
+
+      <div id="logoutDropdownContainer">
+        <a href="{{ route('RuanganAku') }}">Masuk</a>
+        <a href="{{ route('Autentikasi') }}">Logout</a>
+      </div>
+
       <div class="profile-icon">👤</div>
     </div>
   </div>
@@ -269,6 +313,27 @@
         arrow.textContent = isOpen ? '▼' : '▶';
       });
     });
+
+    // Dropdown toggle untuk tombol Menu di navbar (logoutDropdown)
+    const logoutDropdownBtn = document.getElementById('logoutDropdownBtn');
+    const logoutDropdownContainer = document.getElementById('logoutDropdownContainer');
+    const logoutDropdownArrow = document.getElementById('logoutDropdownArrow');
+
+    logoutDropdownBtn.addEventListener('click', function (event) {
+      event.stopPropagation();
+      const isOpen = logoutDropdownContainer.style.display === 'block';
+      logoutDropdownContainer.style.display = isOpen ? 'none' : 'block';
+      logoutDropdownArrow.textContent = isOpen ? '▼' : '▲';
+    });
+
+    // Tutup dropdown logout jika klik di luar
+    document.addEventListener('click', function (event) {
+      if (!logoutDropdownBtn.contains(event.target) && !logoutDropdownContainer.contains(event.target)) {
+        logoutDropdownContainer.style.display = 'none';
+        logoutDropdownArrow.textContent = '▼';
+      }
+    });
   </script>
 </body>
+
 </html>
