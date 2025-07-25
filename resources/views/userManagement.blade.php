@@ -25,9 +25,7 @@
         background-color: #f8f9fa;
         font-weight: bold;
     }
-    table.custom-bordered tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+    
     table.custom-bordered tr:hover {
         background-color: #e9ecef;
     }
