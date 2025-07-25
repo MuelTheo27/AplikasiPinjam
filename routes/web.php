@@ -25,9 +25,9 @@ Route::get('/Ruangan', function () {
 })->name('RuanganAkuGuest');  // Gunakan nama ini di blade untuk akses guest ruangan
 
 // Komen dulu kalau tidak dipakai
-Route::get('/Ruangan', function () {
-    return view('Ruangan');
-})->name('RuanganAku');
+// Route::get('/Ruangan', function () {
+//     return view('Ruangan');
+// })->name('RuanganAku');
 
 Route::get('/Kendaraan', function () {
     return view('Kendaraan');

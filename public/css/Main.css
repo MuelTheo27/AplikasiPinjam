@@ -204,3 +204,16 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+
+.back-btn {
+    background-color: transparent;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    border: hidden;
+    background-color: #ff5515;
+    transition: background-color 0.3s;
+    color: white;
+}
+
