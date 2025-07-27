@@ -209,10 +209,7 @@
         <tr>
           <th></th>
           <th>Menu</th>
-          <th>List</th>
-          <th>Add</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -223,9 +220,6 @@
         <tr>
           <td>{{ $loop->iteration }}</td>
           <td class="submenu">{{ $menu }}</td>
-          <td><input type="checkbox" checked></td>
-          <td><input type="checkbox" checked></td>
-          <td><input type="checkbox" checked></td>
           <td><input type="checkbox" checked></td>
         </tr>
         @endforeach
