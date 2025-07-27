@@ -1,23 +1,46 @@
 @extends('Template')
 
 @section('content')
-    {{-- SEARCH BAR DI KANAN ATAS --}}
-    <form method="GET" action="" style="position: absolute; top: 6rem; right: 2rem; z-index: 10;">
+    {{-- SEARCH + FILTER DI KANAN ATAS --}}
+    <form method="GET" action=""
+        style="position: absolute; top: 6rem; right: 2rem; z-index: 10; display: flex; gap: 0.5rem; align-items: center;">
+        {{-- Filter Kategori --}}
+        <select name="kategori"
+            style="padding: 0.5rem; border-radius: 0.375rem; font-size: 0.875rem; border: 1px solid #ccc;">
+            <option value="">Kategori</option>
+            <option value="Avanza">Avanza</option>
+            <option value="Innova">Innova</option>
+            <option value="Xpander">Xpander</option>
+        </select>
+
+        {{-- Filter Waktu --}}
+        <select name="waktu"
+            style="padding: 0.5rem; border-radius: 0.375rem; font-size: 0.875rem; border: 1px solid #ccc;">
+            <option value="">Waktu</option>
+            <option value="pagi">Pagi</option>
+            <option value="siang">Siang</option>
+            <option value="malam">Malam</option>
+        </select>
+
+        {{-- Search Input --}}
         <input type="text" name="search" placeholder="Search by car name..." value="{{ request('search') }}"
             style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0.375rem; font-size: 0.875rem;">
+
+        {{-- Tombol Search --}}
         <button type="submit"
             style="background-color: #FF5722; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
-            Search
+            Cari
         </button>
     </form>
 
     <div
-        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column; position: relative; margin-top: 60px;">
+        style="padding: 1.5rem; max-width: 1280px; margin: 0 auto; display:flex; justify-content: center; align-items: center; flex-direction: column; position: relative; margin-top: 4rem;">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
             @php
                 $cars = [
                     [
-                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' =>
+                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Avanza',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',
@@ -25,7 +48,8 @@
                         'wheels' => 'Roda 4',
                     ],
                     [
-                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' =>
+                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Innova',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',
@@ -33,7 +57,8 @@
                         'wheels' => 'Roda 4',
                     ],
                     [
-                        'carImage' => 'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
+                        'carImage' =>
+                            'https://auto2000bandung.id/storage/sub_categories/01JBRTVB03RBMFGJDGSGEP6QYG.png',
                         'carName' => 'Xpander',
                         'location' => 'Wahana VW Indonesia Tangerang',
                         'fuelType' => 'Bensin full',

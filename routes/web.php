@@ -71,4 +71,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/user-management/edit', function () {
         return view('userManagementAdmin');
     })->name('admin.userManage.edit');
+
+    Route::get('/pastEvent', function () {
+        return view('pastEvent');
+    })->name('admin.pastEvent');
 });

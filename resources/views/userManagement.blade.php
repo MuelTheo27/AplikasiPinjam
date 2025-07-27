@@ -105,7 +105,6 @@
                     <th>Name</th>
                     <th>Status</th>
                     <th>Level</th>
-                    <th>Add</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -117,13 +116,6 @@
                         <td>Name</td>
                         <td>Active</td>
                         <td>Admin</td>
-                        <td>
-                            <a href="">
-                                <button class="btn btn-action">
-                                    <i class="fas fa-add"></i>
-                                </button>
-                            </a>
-                        </td>
                         <td>
                             <!-- Tombol Edit -->
                             <a href="{{ route('admin.userManage.edit') }}">

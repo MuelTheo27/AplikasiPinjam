@@ -270,6 +270,12 @@
       </li>
 
       <li>
+        <a href="{{ route('admin.pastEvent') }}" class="{{ Route::is('admin.pastEvent') ? 'active' : '' }}">
+          Past Event
+        </a>
+      </li>
+
+      <li>
         <a href="{{ route('admin.userManage') }}" class="{{ Route::is('admin.userManage*') ? 'active' : '' }}">
           User Management
         </a>

@@ -13,11 +13,8 @@ class AdminController extends Controller
         $bookings = Booking::where('status', 'approved')->get();
         return view('admin', compact('bookings'));
     }
-
-    public function destroy($id)
-    {
-        dd("Method destroy dipanggil dengan ID: " . $id);
-
+    
+    public function destroy($id){
         $user = User::findOrFail($id);
         $user->delete();
 
