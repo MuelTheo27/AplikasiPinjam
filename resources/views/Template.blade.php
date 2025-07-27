@@ -20,19 +20,19 @@
             <ul>
                 <li>
                     <a href="{{ route('RuanganAku') }}"
-                        class="nav-link {{ request()->routeIs('ruanganAku') ? 'active' : '' }}" data-id="ruangan">
+                        class="nav-link {{ request()->routeIs('RuanganAku') ? 'active' : '' }}" data-id="ruangan">
                         Ruangan
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('BarangAku') }}"
-                        class="nav-link {{ request()->routeIs('barangAku') ? 'active' : '' }}" data-id="barang">
+                        class="nav-link {{ request()->routeIs('BarangAku') ? 'active' : '' }}" data-id="barang">
                         Barang
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('KendaraanAku') }}"
-                        class="nav-link {{ request()->routeIs('KendaraanAku') ? 'active' : '' }}" data-id="barang">
+                        class="nav-link {{ request()->routeIs('KendaraanAku') ? 'active' : '' }}" data-id="kendaraan">
                         Kendaraan
                     </a>
                 </li>
