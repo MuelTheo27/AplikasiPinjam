@@ -1,32 +1,10 @@
 @extends('Template')
 
 @section('content')
-    {{-- SEARCH + FILTER DI KANAN ATAS --}}
     <form method="GET" action=""
         style="position: absolute; top: 6rem; right: 2rem; z-index: 10; display: flex; gap: 0.5rem; align-items: center;">
-        {{-- Filter Kategori --}}
-        <select name="kategori"
-            style="padding: 0.5rem; border-radius: 0.375rem; font-size: 0.875rem; border: 1px solid #ccc;">
-            <option value="">Kategori</option>
-            <option value="Avanza">Avanza</option>
-            <option value="Innova">Innova</option>
-            <option value="Xpander">Xpander</option>
-        </select>
-
-        {{-- Filter Waktu --}}
-        <select name="waktu"
-            style="padding: 0.5rem; border-radius: 0.375rem; font-size: 0.875rem; border: 1px solid #ccc;">
-            <option value="">Waktu</option>
-            <option value="pagi">Pagi</option>
-            <option value="siang">Siang</option>
-            <option value="malam">Malam</option>
-        </select>
-
-        {{-- Search Input --}}
         <input type="text" name="search" placeholder="Search by car name..." value="{{ request('search') }}"
             style="padding: 0.5rem 1rem; border: 1px solid #ccc; border-radius: 0.375rem; font-size: 0.875rem;">
-
-        {{-- Tombol Search --}}
         <button type="submit"
             style="background-color: #FF5722; color: white; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; cursor: pointer;">
             Cari

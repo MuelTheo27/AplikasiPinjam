@@ -95,9 +95,24 @@
             background: #d94f08;
             color: #fff;
         }
+
+        .btn-add-admin {
+            background-color: #f4570a;
+            color: white;
+            padding: 8px 10px;
+            font-size: 1em;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
     </style>
 
     <div style="font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <a href="" class="btn btn-add-admin">
+            <i class="fas fa-user-plus" style="margin-right: 6px;"></i> Add Admin
+        </a>
         <table class="custom-bordered">
             <thead>
                 <tr>
